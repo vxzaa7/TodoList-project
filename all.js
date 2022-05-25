@@ -20,7 +20,7 @@ function addTodo(){
 };
 
 const list = document.querySelector('.list');
-function rander(){
+function rander(data){
     let str = '';
     data.forEach((i)=>{
         str+=`
@@ -64,7 +64,7 @@ list.addEventListener('click', function(e){
 const tab = document.querySelector('.tab');
 let state = 'all';
 tab.addEventListener('click', function(e){
-    state = e.target.dataset.tab;
+    state = e.target.dataset.state;
 
   let tabs = document.querySelectorAll('.tab li');
   tabs.forEach((i) => {
@@ -80,7 +80,7 @@ function upData() {
     let newData = [];
     if (state == 'all') {
       newData = data;
-    } else if (state == 'work') {
+    } else if (state == 'todo') {
       newData = data.filter((i) => i.checked == '');
       console.log(newData);
     } else {
@@ -100,8 +100,7 @@ function upData() {
     upData();
   });
   
-  //鍵盤優化
-  //註冊監聽 input 欄位的 "keyup" 事件
+  
   txtAdd.addEventListener("keyup", function (e) {
     if(e.key == 'Enter'){
         addTodo();
